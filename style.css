@@ -2,7 +2,7 @@
 
 body {
     display: grid;
-    grid-template-rows: 1fr 7fr;
+    grid-template-rows: min(100px, 10rem) 7fr;
     font-family: 'Roboto', serif;
     gap: 0;
     margin: 0;
@@ -50,12 +50,14 @@ header > img {
 .main-content > button:hover {
     color: white;
     background-color: rgb(0, 121, 151);
+    box-shadow: 0px 5px 10px rgb(155, 155, 155);
 }
 
-dialog {
+dialog[open] {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 1rem;
     height: min(20%, 400px);
     width: min(15%, 250px);
     border-radius: 20px;
@@ -74,7 +76,7 @@ dialog > form > input {
     padding: 0.25rem;
     padding-left: 0.5rem;
     border-width: 0px;
-    background-color: rgb(165, 209, 238);
+    background-color: rgb(218, 218, 218);
 }
 
 dialog .controls {
@@ -96,14 +98,24 @@ dialog > .controls > button {
 
 .controls > button:hover {
     border-style: bold;
-    border-color: blue;
     color: white;
     background-color: rgb(0, 121, 151);
     box-shadow: 0px 5px 10px rgb(155, 155, 155);
 }
 
 .book-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-columns: repeat(auto-fit, 1fr);
+    overflow: auto;
+    gap: 20px;
+    padding: min(20px, 1rem);
     background-color: red;
-    height: 100%;
+    width: 100%;
+}
 
+.book-presentation-card {
+    height: 200px;
+    width: 200px;
+    background-color: green;
 }
