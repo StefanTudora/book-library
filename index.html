@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Library</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <header>
+        <p>Book Library</p>
+    </header>
+    <div class="main-content">
+        <button command="show-modal" commandfor="my-dialog">+ Add Book</button>
+        
+        <dialog id="my-dialog">
+            <p>My dialog</p>
+            <button command="close" commandfor="my-dialog">Close</button>
+        </dialog>
+        
+        <div class="book-display">
+            <!-- Handled dinamically -->
+        </div>
+    </div>
+</body>

@@ -1,0 +1,45 @@
+
+
+body {
+    display: grid;
+    grid-template-rows: 1fr 7fr;
+    font-family: 'Roboto', serif;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    font-size: 2rem;
+    background-color: rgb(0, 121, 151);;
+    justify-content: center;
+    color: white;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-content > button {
+    border-width: 0;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 2rem;
+    font-style: bold;
+    width: 200px;
+    transition: 0.3s;
+}
+
+.main-content > button:hover {
+    color: white;
+    background-color: rgb(0, 121, 151);
+}
+
+#my-dialog {
+    border-radius: 20px;
+    border-width: 0.1rem;
+}
