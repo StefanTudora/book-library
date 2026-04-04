@@ -12,9 +12,20 @@ body {
 header {
     display: flex;
     font-size: 2rem;
+    font-weight: bolder;
     background-color: rgb(0, 121, 151);;
     justify-content: center;
     color: white;
+    gap: 50rem;
+}
+
+.modal-active {
+  filter: blur(50px);
+}
+
+header > img {
+    width: 5rem;
+    filter: invert(1);
 }
 
 .main-content {
@@ -22,12 +33,14 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 2rem;
+    gap: 1rem;
 }
 
 .main-content > button {
-    border-width: 0;
+    border-width: 0rem;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 1rem;
     font-size: 2rem;
     font-style: bold;
     width: 200px;
@@ -42,4 +55,11 @@ header {
 #my-dialog {
     border-radius: 20px;
     border-width: 0.1rem;
+}
+
+
+.book-display {
+    background-color: red;
+    height: 100%;
+
 }
