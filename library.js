@@ -24,6 +24,9 @@ function createDisplayNode(book) {
         const newProp = document.createElement("p");
         newProp.innerText = book[property];
     }
+    const deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "Delete Entry";
+    newEntry.appendChild(deleteBtn);
     return newEntry;
 }
 
@@ -32,7 +35,7 @@ function addBookToLibrary(book) {
     // Save the entry in the library
     myLibrary.push(book);
     // Get book display div
-    const bookDiv = getContentDiv()
+    const bookDiv = getContentDiv();
     // Create a new entry and append
     bookDiv.appendChild(createDisplayNode(book));
 }

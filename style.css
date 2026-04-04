@@ -115,7 +115,16 @@ dialog > .controls > button {
 }
 
 .book-presentation-card {
-    height: 200px;
-    width: 200px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* height: 200px;
+    width: 200px; */
     background-color: green;
+    color: white;
+}
+
+.book-presentation-card > button {
+    font-size: 20px;
+    border-radius: 10px;
 }
