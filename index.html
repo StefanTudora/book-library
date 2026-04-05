@@ -20,16 +20,16 @@
         <button id="add-book">+ Add Book</button>
         <dialog>
             <form>
-                <label for="">Book Name</label>
-                <input>
-                <label for="">Author</label>
-                <input>
-                <label for="">No. pages</label>
-                <input>
+                <label for="name">Book Name</label>
+                <input type="text" id="name" required>
+                <label for="author">Author</label>
+                <input type="text" id="author" required>
+                <label for="no-pages">No. pages</label>
+                <input type="number" id="no-pages" required>
             </form>
             <div class="controls">
                 <button class="modal-btn" id="close-btn">Close</button>
-                <button class="modal-btn" id="submit-btn">Submit</button>
+                <input type="submit" class="modal-btn" id="submit-btn">
             </div>
         </dialog>
         <div class="book-display">

@@ -86,7 +86,7 @@ dialog .controls {
     gap: max(10px, 2rem);
 }
 
-dialog > .controls > button {
+dialog > .controls > button, #submit-btn {
     color: black;
     border-radius: max(10px, 1.5rem);
     font-size: max(10px, 1.3rem);
@@ -96,7 +96,7 @@ dialog > .controls > button {
     transition: 0.3s;
 }
 
-.controls > button:hover {
+.controls > button:hover, #submit-btn:hover {
     border-style: bold;
     color: white;
     background-color: rgb(0, 121, 151);
@@ -107,24 +107,41 @@ dialog > .controls > button {
     display: grid;
     grid-template-columns: repeat(auto-fit, 200px);
     grid-template-columns: repeat(auto-fit, 1fr);
+    justify-content: center;
     overflow: auto;
     gap: 20px;
     padding: min(20px, 1rem);
-    background-color: red;
+    background-color: white;
     width: 100%;
+    padding: 2rem;
 }
 
 .book-presentation-card {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     gap: 20px;
-    /* height: 200px;
-    width: 200px; */
-    background-color: green;
-    color: white;
+    background-color: white;
+    padding: min(30px, 1rem);
+    border-radius: 1rem;
+    border-color: black;
+    border-style: dashed;
+    transition: 0.3s;
+}
+
+.book-presentation-card:hover {
+    scale: 1.1;
+    box-shadow: 10px 10px 10px rgb(204, 204, 204);
 }
 
 .book-presentation-card > button {
-    font-size: 20px;
     border-radius: 10px;
+    border-width: 0px;
+    font-size: min(20px, 1.3rem);
+    transition: 0.3s;
+}
+
+.book-presentation-card > button:hover {
+    color: white;
+    background-color: red;
 }

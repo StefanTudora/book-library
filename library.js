@@ -2,7 +2,6 @@
 // Keep count of the current items on display
 const myLibrary = [];
 
-// Create a new entry
 class Book {
     constructor(name, author, pageNo) {
         // To be added
@@ -20,12 +19,21 @@ function getContentDiv() {
 function createDisplayNode(book) {
     const newEntry = document.createElement("div");
     newEntry.classList.add("book-presentation-card")
-    for (var property in Object.getOwnPropertyNames(book)) {
+    for (const property of Object.getOwnPropertyNames(book)) {
+        if (property === "UUID") {
+            newEntry.dataset.bookUUID = book[property];
+            continue;
+        }
         const newProp = document.createElement("p");
         newProp.innerText = book[property];
+        newEntry.appendChild(newProp);
     }
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Delete Entry";
+    deleteBtn.addEventListener("click", () => {
+        newEntry.parentElement.removeChild(newEntry);
+        myLibrary.splice(myLibrary.indexOf(book), 1);
+    });
     newEntry.appendChild(deleteBtn);
     return newEntry;
 }
