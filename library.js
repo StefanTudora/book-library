@@ -76,16 +76,22 @@ function attachBtnListeners() {
 
     const closeModalBtn = document.querySelector("dialog #close-btn");
 
-    const submitModalBtn = document.querySelector("dialog #submit-btn");
-
     closeModalBtn.addEventListener("click", (event) => {
         event.preventDefault();
         bookDialog.close();
     });
 
-    submitModalBtn.addEventListener("click", (event) => {
+    const bookForm = document.querySelector("form");
+
+    bookForm.addEventListener("submit", (event) => {
         event.preventDefault();
-        addBookToLibrary(new Book("George", "George", 100, false));
+        addBookToLibrary(new Book(
+            document.getElementById("name").value,
+            document.getElementById("author").value,
+            document.getElementById("no-pages").value,
+            false
+        ));
+        bookForm.reset();
         bookDialog.close();
     });
 }
