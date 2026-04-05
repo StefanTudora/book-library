@@ -145,3 +145,9 @@ dialog > .controls > button, #submit-btn {
     color: white;
     background-color: red;
 }
+
+.book-presentation-card > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

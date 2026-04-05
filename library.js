@@ -16,6 +16,17 @@ function getContentDiv() {
     return document.querySelector(".book-display");
 }
 
+function getCardRow(property, bookProperty) {
+    const row = document.createElement("div");
+    const attribute = document.createElement("p");
+    attribute.innerHTML = property.substring(0, 1).toUpperCase() + property.substring(1);
+    row.appendChild(attribute);
+    const value = document.createElement("p");
+    value.innerHTML = bookProperty;
+    row.appendChild(value);
+    return row;
+}
+
 function createDisplayNode(book) {
     const newEntry = document.createElement("div");
     newEntry.classList.add("book-presentation-card")
@@ -24,9 +35,7 @@ function createDisplayNode(book) {
             newEntry.dataset.bookUUID = book[property];
             continue;
         }
-        const newProp = document.createElement("p");
-        newProp.innerText = book[property];
-        newEntry.appendChild(newProp);
+        newEntry.appendChild(getCardRow(property, book[property]));
     }
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Delete Entry";
