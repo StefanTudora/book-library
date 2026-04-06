@@ -3,14 +3,30 @@
 const myLibrary = [];
 
 class Book {
+    #readStatus;
     constructor(name, author, pageNo) {
         // To be added
         this.name = name;
         this.author = author;
         this.pageNo = pageNo;
+        this.readStatus = false;
         this.UUID = crypto.randomUUID();
     }
+
+    toggleReadStatus() {
+        this.#readStatus = !this.#readStatus;
+    }
+
+    getReadStatus() {
+        return this.#readStatus;
+    }
 }
+
+var propertiesMap = new Map([
+  ["name", "Name"],
+  ["author", "Author"],
+  ["pageNo", "No. pages"]
+])
 
 function getContentDiv() {
     return document.querySelector(".book-display");
@@ -19,7 +35,7 @@ function getContentDiv() {
 function getCardRow(property, bookProperty) {
     const row = document.createElement("div");
     const attribute = document.createElement("p");
-    attribute.innerHTML = property.substring(0, 1).toUpperCase() + property.substring(1);
+    attribute.innerText = propertiesMap.get(property);
     row.appendChild(attribute);
     const value = document.createElement("p");
     value.innerHTML = bookProperty;
@@ -41,7 +57,7 @@ function createDisplayNode(book) {
     deleteBtn.innerText = "Delete Entry";
     deleteBtn.addEventListener("click", () => {
         newEntry.parentElement.removeChild(newEntry);
-        myLibrary.splice(myLibrary.indexOf(book), 1);
+        removeBookByUUID(newEntry.dataset.bookUUID);
     });
     newEntry.appendChild(deleteBtn);
     return newEntry;

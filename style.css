@@ -64,6 +64,10 @@ dialog[open] {
     border-width: 0.1rem;
 }
 
+dialog::backdrop {
+        backdrop-filter: blur(4px);
+}
+
 dialog > form {
     display: flex;
     flex-direction: column;
@@ -161,3 +165,5 @@ dialog .controls > button, #submit-btn {
     justify-content: space-between;
     gap: 20px;
 }
+
+
