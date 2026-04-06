@@ -9,7 +9,7 @@ class Book {
         this.name = name;
         this.author = author;
         this.pageNo = pageNo;
-        this.readStatus = false;
+        this.#readStatus = false;
         this.UUID = crypto.randomUUID();
     }
 
@@ -23,9 +23,9 @@ class Book {
 }
 
 var propertiesMap = new Map([
-  ["name", "Name"],
-  ["author", "Author"],
-  ["pageNo", "No. pages"]
+    ["name", "Name"],
+    ["author", "Author"],
+    ["pageNo", "No. pages"]
 ])
 
 function getContentDiv() {
@@ -50,14 +50,28 @@ function createDisplayNode(book) {
         if (property === "UUID") {
             newEntry.dataset.bookUUID = book[property];
             continue;
+        } else if (property !== undefined) {
+            newEntry.appendChild(getCardRow(property, book[property]));
         }
-        newEntry.appendChild(getCardRow(property, book[property]));
     }
+    // Create the toggle for the read status
+    const row = document.createElement("div");
+    const readStatus = document.createElement("p");
+    readStatus.innerText = "Read Status"
+    const slider = document.createElement("input");
+    slider.setAttribute("class", "slider");
+    slider.setAttribute("type", "checkbox");
+    slider.addEventListener("click", () => {
+        toggleStatForBook(newEntry.dataset.bookUUID);
+    });
+    row.appendChild(readStatus);
+    row.appendChild(slider);
+    newEntry.appendChild(row);
     const deleteBtn = document.createElement("button");
     deleteBtn.innerText = "Delete Entry";
     deleteBtn.addEventListener("click", () => {
-        newEntry.parentElement.removeChild(newEntry);
         removeBookByUUID(newEntry.dataset.bookUUID);
+        newEntry.parentElement.removeChild(newEntry);
     });
     newEntry.appendChild(deleteBtn);
     return newEntry;
@@ -74,10 +88,14 @@ function addBookToLibrary(book) {
 }
 
 function removeBookByUUID(UUID) {
-    const toRemoveIdx = myLibrary.filter(book => book.getUUID() == UUID);
+    const toRemoveIdx = myLibrary.filter((book) => book.UUID == UUID);
     if (toRemoveIdx > -1) {
         myLibrary.splice(toRemoveIdx, 1);
     }
+}
+
+function toggleStatForBook(UUID) {
+    myLibrary.find(book => book.UUID == UUID).toggleReadStatus();
 }
 
 function attachBtnListeners() {
